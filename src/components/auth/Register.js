@@ -42,7 +42,7 @@ export default function Register() {
   function delay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
-
+  console.log(APIReg);
   async function fetchData(data) {
     try {
       await axios.post(APIReg, data);
