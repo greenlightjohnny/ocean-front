@@ -88,7 +88,7 @@ export default function Login(props) {
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Login</h1>
-          {welcome && <p>{welcome}</p>}
+          <div className={Styles.errorcon}>{welcome && <p>{welcome}</p>}</div>
           <input
             name="email"
             placeholder="Email"
