@@ -102,7 +102,45 @@ const Home = () => {
             <img src={Flow} alt="Diagram of servers" />
           </div>
           <div className={Styles.sendit}>
-            <img src={Flow} alt="Diagram of servers" />
+            <div className={Styles.left}>
+              <h3>Front End</h3>
+              <p>
+                Lots going on here! This has a React SPA front end (hosted on
+                Netlify). It's using all React functional components with Hooks,
+                no class based components. useContext, useEffect, useState, and
+                createContext are use. For routing, I have private and public
+                routes set up and redirects in place with the useParams and
+                useHistory to display error messages and redirect the client{" "}
+              </p>
+              <p>
+                For the registration and login forms, I am using Joi for input
+                validation client side before submitting information to the back
+                end server. It displays error messages telling the user what the
+                issue is. After successfully submitting to the server, I have a
+                spinner display for 1 second just so the user feels like it is
+                actually checking (it is, but obviously much faster). If my back
+                end server returns an error message, such as the email already
+                being registered, that message will be displayed. On success the
+                user will be redirected.
+              </p>
+            </div>
+            <div className={Styles.right}>
+              <h3>Back End</h3>
+              <p>
+                I have two back end servers: <br></br>A Digital Ocean VPS
+                running Nginx and PM2, and a MongoDBAtlas server for the
+                database.
+                <br></br>
+                The Node server is using Express and Mongoose for routing and
+                database work, along with Joi for input validation and Bcrypt
+                for salting and hashing. Authentication and authorization is
+                handled using JWTs, which are stored client side only, making it
+                a REST API. The Node server is also responsible for sending out
+                registration conformation emails with a separate unique JWT.
+                <br></br>
+              </p>
+              <p></p>
+            </div>
           </div>
         </div>
       </section>
