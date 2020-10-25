@@ -4,8 +4,12 @@ import Place from "../images/place2.png";
 import Reg from "../images/reg.png";
 import Login from "../images/loginback.png";
 import Jwtback from "../images/jwtback.png";
+import Email from "../images/email.png";
+import Confirm from "../images/confirmback.png";
 import Token from "../images/token.png";
 import Zoom from "react-reveal/Zoom";
+import Slide from "react-reveal/Slide";
+
 const About = () => {
   return (
     <section className={Styles.about}>
@@ -65,11 +69,11 @@ const About = () => {
               the cookie can't be accessed by client side JavaScript.
             </p>
           </div>
-          <Zoom>
+          <Slide right>
             <div className={Styles.pic}>
               <img src={Jwtback} alt="image" />
             </div>
-          </Zoom>
+          </Slide>
         </div>
 
         <div className={Styles.flex}>
@@ -120,10 +124,53 @@ const About = () => {
           </div>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Token} alt="image" />
+              <img src={Reg} alt="image" />
             </div>
           </Zoom>
         </div>
+      </div>
+
+      <div className={Styles.flex}>
+        <Zoom>
+          <div className={Styles.pic}>
+            <img src={Email} alt="image" />
+          </div>
+        </Zoom>
+        <div className={Styles.txt}>
+          <h3>Client is sent confirmation email</h3>
+          <p>
+            SendGrid is used to send an email via SMTP (had to punch a hole in
+            the firewall for this, wasted a few hours wondering why it was not
+            working). On successfully sending the email, the Node server sends a
+            message back to the client telling them to confirm their email and
+            redirects them to the login page.
+            <br></br> <br></br>
+          </p>
+        </div>
+      </div>
+
+      <div className={Styles.flex}>
+        <div className={Styles.txt}>
+          <h3>Client confirms email</h3>
+          <p>
+            The client receives an email with a link to the site in the form of
+            "www.sitename.com/confirm/long-string-jwt". Clicking on the link
+            takes them to the React front end and to a unique URL. I am using
+            React Router and the token as a param to create a page dynamically
+            with the JWT as part of the URL. This React component, once loaded,
+            sends a request to the Node server. The Node server receives the
+            request and Express sends it to the verification route.
+            <br></br> <br></br>
+            The JWT is validated, and if everything checks out, sends a
+            conformation back to the the client. The client is given a success
+            message, and after two seconds redirected to the login page. Easy!
+          </p>
+        </div>
+        <Zoom>
+          <div className={Styles.pic}>
+            <img src={Confirm} alt="image" />
+          </div>
+        </Zoom>
       </div>
     </section>
   );

@@ -97,7 +97,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className={Styles.flow}>
+      {/* <section className={Styles.flow}>
         <div className={Styles.con}>
           <div className={Styles.imgcon}>
             <img src={Flow} alt="Diagram of servers" />
@@ -188,7 +188,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <About />
     </>
   );
