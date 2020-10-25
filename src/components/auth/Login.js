@@ -99,7 +99,12 @@ export default function Login(props) {
             {errors.email && <p>{errors.email.message}</p>}
           </div>
 
-          <input name="password" placeholder="password" ref={register} />
+          <input
+            name="password"
+            type="password"
+            placeholder="password"
+            ref={register}
+          />
           <div className={Styles.errorcon}>
             {errors.password && <p>{errors.password.message}</p>}
           </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Flow from "../../images/flow3.svg";
+import About from "../About";
 import Styles from "./home.module.scss";
 import Icon1 from "../../images/icon1.png";
 import Icon2 from "../../images/icon2.png";
@@ -188,6 +189,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <About />
     </>
   );
 };

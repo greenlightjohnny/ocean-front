@@ -90,9 +90,10 @@
   p {
     color: #2199df;
     padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .errorcon {
-    height: 37px;
+    min-height: 37px;
   }
 }

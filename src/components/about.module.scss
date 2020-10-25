@@ -1,0 +1,45 @@
+.about {
+  background: #191d3a;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+    border: 1px solid green;
+
+    .txt {
+      max-width: 400px;
+      border: 1px solid blue;
+
+      h3 {
+        color: #2199df;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: #fff;
+        text-align: left;
+        line-height: 1.5rem;
+      }
+    }
+
+    .pic {
+      max-width: 600px;
+      border: 1px solid gold;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
