@@ -1,6 +1,10 @@
 import React from "react";
 import Styles from "./about.module.scss";
 import Place from "../images/place2.png";
+import Reg from "../images/reg.png";
+import Login from "../images/loginback.png";
+import Jwtback from "../images/jwtback.png";
+import Token from "../images/token.png";
 import Zoom from "react-reveal/Zoom";
 const About = () => {
   return (
@@ -8,17 +12,12 @@ const About = () => {
       <div className={Styles.container}>
         <div className={Styles.flex}>
           <div className={Styles.txt}>
-            <h3>Login</h3>
+            <h3>Front end Login</h3>
             <p>
-              For the registration and login forms, I am using Joi for input
-              validation client side before submitting information to the back
-              end server. It displays error messages telling the user what the
-              issue is. After successfully submitting to the server, I have a
-              spinner display for 1 second just so the user feels like it is
-              actually checking (it is, but obviously much faster). If my back
-              end server returns an error message, such as the email already
-              being registered, that message will be displayed. On success the
-              user will be redirected.
+              Client side input validation using Joi, displays error message if
+              the input is not valid and does not send to the back end server.
+              If it passes the validation, it makes a POST request to the back
+              end Node REST API using Axios.
             </p>
           </div>
           <Zoom>
@@ -31,21 +30,69 @@ const About = () => {
         <div className={Styles.flex}>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Place} alt="image" />
+              <img src={Login} alt="image" />
             </div>
           </Zoom>
           <div className={Styles.txt}>
-            <h3>Login</h3>
+            <h3>Back end login api</h3>
             <p>
-              For the registration and login forms, I am using Joi for input
-              validation client side before submitting information to the back
-              end server. It displays error messages telling the user what the
-              issue is. After successfully submitting to the server, I have a
-              spinner display for 1 second just so the user feels like it is
-              actually checking (it is, but obviously much faster). If my back
-              end server returns an error message, such as the email already
-              being registered, that message will be displayed. On success the
-              user will be redirected.
+              The back end server is a VPS Digital Ocean Droplet. I have it
+              running Ubuntu and an Nginx server which directs incoming
+              requests. PM2 is used to manage multiple Node apps. The login
+              request is sent to a Node process that is using Express for
+              routing and Mongoose for database connectivity and schemas.
+              <br></br> <br></br>
+              The login route also validates the data using Joi. If it passes,
+              Mongoose is used to query the MongoDB server to see if the user
+              exists. If it does, Mongoose returns the user object and Bcrypt is
+              used to compare the stored hashed password with the password sent
+              in the request. If it matches, a JWT is generated using the NPM
+              "json-web-token" module.
+            </p>
+          </div>
+        </div>
+
+        <div className={Styles.flex}>
+          <div className={Styles.txt}>
+            <h3>Back end JWT generation</h3>
+            <p>
+              A secret key stored on the server is used along with the MongoDB
+              generated user ID to create and sign a JSON Web Token. This JWT is
+              sent back to the client stored inside a cookie. The cookie is set
+              to httpOnly=true, meaning it can only be accessed via HTTP, and
+              sameSite=true is set to insure it is only sent to the correct
+              server. Supposedly this is currently the most secure method, since
+              the cookie can't be accessed by client side JavaScript.
+            </p>
+          </div>
+          <Zoom>
+            <div className={Styles.pic}>
+              <img src={Jwtback} alt="image" />
+            </div>
+          </Zoom>
+        </div>
+
+        <div className={Styles.flex}>
+          <Zoom>
+            <div className={Styles.pic}>
+              <img src={Token} alt="image" />
+            </div>
+          </Zoom>
+          <div className={Styles.txt}>
+            <h3>Client receives login response</h3>
+            <p>
+              If the login request passed the gauntlet of checks, it receives a
+              cookie as a reward. If it fails, an error message is displayed
+              telling the user what the problem is (validation, user/password
+              not found, database server error).
+              <br></br> <br></br>
+              The cookie is now stored and sent along with any request to the
+              back end Node REST API, allowing the user to access protected
+              routes. Once the user is authenticated, the register and login
+              buttons on the nav bar are replaced with a logout button. The
+              logout button sends a request to the API to removed the cookie,
+              and once done the client can no longer access private routes on
+              the React front end.
             </p>
           </div>
         </div>
@@ -54,20 +101,28 @@ const About = () => {
           <div className={Styles.txt}>
             <h3>Registration</h3>
             <p>
-              For the registration and login forms, I am using Joi for input
-              validation client side before submitting information to the back
-              end server. It displays error messages telling the user what the
-              issue is. After successfully submitting to the server, I have a
-              spinner display for 1 second just so the user feels like it is
-              actually checking (it is, but obviously much faster). If my back
-              end server returns an error message, such as the email already
-              being registered, that message will be displayed. On success the
-              user will be redirected.
+              The first steps are almost the same as the login. Joi is used
+              client side for validation and Axios is used to send a POST
+              request to the Node back end server. The Node server also uses
+              Joi, and after data validation sends a query using Mongoose to the
+              MongoDB Atlas server to find out if the email has already been
+              registered.
+            </p>
+            <p>
+              If not, the user data is temporarily saved to the MongoDB server.
+              The password, of course, is salted and encrypted before being sent
+              from the Node server to the MongoDB server.
+            </p>
+            <p>
+              A temporary JWT is generated using a secret key and the MongoDB
+              generated user ID, and this is passed on to the email handler.
             </p>
           </div>
-          <div className={Styles.pic}>
-            <img src={Place} alt="image" />
-          </div>
+          <Zoom>
+            <div className={Styles.pic}>
+              <img src={Token} alt="image" />
+            </div>
+          </Zoom>
         </div>
       </div>
     </section>
