@@ -54,5 +54,11 @@
     letter-spacing: 1px;
     font-weight: bold;
     text-transform: uppercase;
+
+    &:focus,
+    &:active {
+      outline: none;
+      //border: 2px solid #bf1650;
+    }
   }
 }

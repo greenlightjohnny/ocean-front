@@ -30,7 +30,7 @@ const Home = () => {
                 MERN For Fun and <span>Profit</span>
               </h1>
               <p>
-                Three servers (Netlify, Heroku, Atlas) <br></br>
+                Three servers (Netlify, Digital Ocean, Atlas) <br></br>
                 Registration with client AND server side validation <br></br>
                 Email confirmations with unique JWT URL's <br></br>
                 Bcrypt salting and hashing <br></br>
@@ -139,7 +139,51 @@ const Home = () => {
                 registration conformation emails with a separate unique JWT.
                 <br></br>
               </p>
-              <p></p>
+              <p>
+                The Digital Ocean VPS is running several different Node
+                applications on different ports using PM2 to manage them, and
+                Nginx is used to route incoming requests to the correct one. The
+                Node program I built for this is a REST API, it is using Express
+                for routing and Mongoose for database connectivity. It has
+                routes for registration, login, deleting the account, logging
+                out, authentication, and email conformation
+              </p>
+              <p>
+                Both the registration and login routes also use Joi to validate
+                input prior to sending a request to the MongoDB server. If there
+                is an error, it is sent back the client without needing to
+                bother the poor server.
+              </p>
+              <p>
+                The registration and login routes also both use Bcrypt to salt
+                and hash passwords along with a secret key.
+              </p>
+              <p>
+                The registration route will temporarily save the user to the
+                MongoDB database, and create a JWT using the generated ID and
+                secret key. This JWT has a 20 minute expiration window. Next an
+                email is sent using either Node Mailer or SendGrid with a link
+                that uses the JWT as a URI parameter. The user has 20 minutes to
+                click the link, taking them to the front end confirmation page
+                where the JWT is taken from the URI and sent to the back end
+                Node confirmation route for checking.{" "}
+              </p>
+              <p>
+                If the registration and confirmation are successful, the client
+                can now login. The login request checks the email to see if it
+                exists, and the password against the stored hashed version. If
+                successful it generates a JWT signed with a secret key and the
+                users MongoDB generated ID. It is returned to the client as a
+                HttpOnly and sameSite=true cookie. This is allegedly the
+                securest way to store it client side. Because it is a REST API,
+                the JWT is not stored on the back end.{" "}
+              </p>
+              <p>
+                Each time the user sends a request once logged in, the JWT is
+                included and sent to the back end server as a cookie. I use
+                Cookie Parser to read the cookie, and check to see if it is
+                valid using a JWT verify function.
+              </p>
             </div>
           </div>
         </div>
