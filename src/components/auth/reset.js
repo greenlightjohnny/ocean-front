@@ -54,7 +54,7 @@ const Reset = (props) => {
   //fetch data
   async function fetchData(data) {
     try {
-      const loginRes = await axios.post(`ConfirmURL/${token}`, data, {
+      const loginRes = await axios.post(`${ConfirmURL}/${token}`, data, {
         withCredentials: true,
       });
 
