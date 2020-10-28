@@ -22,6 +22,7 @@ export default function ResetRequest(props) {
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const APIReset = "/api/v1/users/reset";
 
   //clear nodeError
@@ -48,7 +49,7 @@ export default function ResetRequest(props) {
       const resetRes = await axios.post(APIReset, data, {
         withCredentials: true,
       });
-
+      setSuccess(true);
       //history.push("/");
     } catch (err) {
       err.response.data.msg && setNodeError(err.response.data.msg);
@@ -81,34 +82,46 @@ export default function ResetRequest(props) {
   const welcome = props.location.welcome;
 
   return (
-    <div className={Styles.reg}>
-      <div className={Styles.regcon}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Reset</h1>
-          <div className={Styles.errorcon}>{welcome && <p>{welcome}</p>}</div>
-          <input
-            name="email"
-            placeholder="Email"
-            defaultValue=""
-            ref={register}
-          />
-          <div className={Styles.errorcon}>
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
+    <>
+      {!success ? (
+        <div className={Styles.reg}>
+          <div className={Styles.regcon}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1>Reset</h1>
+              <div className={Styles.errorcon}>
+                {welcome && <p>{welcome}</p>}
+              </div>
+              <input
+                name="email"
+                placeholder="Email"
+                defaultValue=""
+                ref={register}
+              />
+              <div className={Styles.errorcon}>
+                {errors.email && <p>{errors.email.message}</p>}
+              </div>
 
-          {/* <input type="submit" /> */}
-          <Button type="submit" isLoading={isButtonLoading}>
-            Submit
-          </Button>
-          <div className={Styles.errorcon}>
-            {nodeError && <p>{nodeError}</p>}
+              {/* <input type="submit" /> */}
+              <Button type="submit" isLoading={isButtonLoading}>
+                Submit
+              </Button>
+              <div className={Styles.errorcon}>
+                {nodeError && <p>{nodeError}</p>}
+              </div>
+              <p>
+                Forgot your password? Enter the email you registered with and we
+                will send you a link reset it.
+              </p>
+            </form>
           </div>
-          <p>
-            Forgot your password? Enter the email you registered with and we
-            will send you a link reset it.
-          </p>
-        </form>
-      </div>
-    </div>
+        </div>
+      ) : (
+        <div className={Styles.reg}>
+          <div className={Styles.regcon}>
+            <h1>Success! Check your email to reset your password</h1>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
