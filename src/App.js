@@ -12,6 +12,7 @@ import Secret from "./components/pages/Secrets";
 import Private from "./hocs/Private2";
 import Reset from "./components/pages/ResetRequest";
 import Reset2 from "./components/auth/reset";
+import UserControl from "./components/pages/UserControl";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" component={Register}></Route>
           <Route path="/register" component={Register}></Route>
           <Private path="/secrets" component={Secret}></Private>
+          <Route path="/user" component={UserControl}></Route>
           <Route path="/confirm/:etoken" component={Confirm}></Route>
           <Route path="/resetform/:token" component={Reset2}></Route>
           <Route path="/reset" component={Reset}></Route>

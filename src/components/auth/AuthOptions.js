@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 //import UserContext from "../../context/UserContext";
 import { AuthContext } from "../../context/AuthContext";
+import Logo from "../../images/usero.png";
+import Styles from "./authoptions.module.scss";
 const AuthOptions = (props) => {
   const authContext = useContext(AuthContext);
   const history = useHistory();
@@ -28,11 +30,18 @@ const AuthOptions = (props) => {
   };
 
   return (
+    // <>
+    //   <Link to="/secrets">Secret</Link>
+    //   <button onClick={logout}>Log Out</button>
+    //   <Link to="/user" alt="control panel">
+    //     <img className={Styles.btn} src={Logo} alt="test" />
+    //   </Link>
+    // </>
     <div>
       {authContext.isAuthenticated ? (
         <>
           <Link to="/secrets">Secret</Link>
-          <button onClick={logout}>Log Out</button>{" "}
+          <button onClick={logout}>Log Out</button> <Logo stroke="#ec5990" />
         </>
       ) : (
         <>

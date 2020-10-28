@@ -1,0 +1,76 @@
+.main {
+  min-height: 100vh;
+  background-color: #191d3a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid red;
+  height: 100vh;
+  padding-top: 60px;
+
+  .gridContainer {
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    // grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    // gap: 0px 0px;
+    // grid-template-areas:
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . ."
+    //   ". . . . . . . . . . . . . . . . . . . .";
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+
+  .select {
+    border: 1px solid blue;
+
+    grid-column: 1 / 4;
+    grid-row: 1 / 21;
+
+    .selectItem {
+      width: 100%;
+      border: 1px solid green;
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+
+      button {
+        background-color: transparent;
+        border: none;
+        &:hover {
+          cursor: pointer;
+        }
+
+        h4 {
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}

@@ -118,7 +118,10 @@ export default function ResetRequest(props) {
       ) : (
         <div className={Styles.reg}>
           <div className={Styles.regcon}>
-            <h1>Success! Check your email to reset your password</h1>
+            <h3>
+              If that email is registered, check it to confirm your password
+              within 20 minutes.
+            </h3>
           </div>
         </div>
       )}
