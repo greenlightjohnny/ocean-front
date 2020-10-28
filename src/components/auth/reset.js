@@ -31,7 +31,7 @@ const Reset = (props) => {
 
   const { token } = useParams();
 
-  const ConfirmURL = "/api/v1/users/reset";
+  const ConfirmURL = "/api/v1/users/resetform";
 
   //clear nodeError
   const clearNode = () => {
@@ -58,7 +58,11 @@ const Reset = (props) => {
         withCredentials: true,
       });
 
-      return console.log("middel###", loginRes.response);
+      console.log("middel###", loginRes.response);
+      history.push({
+        pathname: "/login",
+        welcome: "Your password is reset! Login using it",
+      });
 
       //history.push("/");
     } catch (err) {
@@ -124,10 +128,7 @@ const Reset = (props) => {
           <div className={Styles.errorcon}>
             {nodeError && <p>{nodeError}</p>}
           </div>
-          <p>
-            Forgot your password? Click <Link to="/reset">Here</Link> to reset
-            it.
-          </p>
+          <p>Enter your new password</p>
         </form>
       </div>
     </div>
