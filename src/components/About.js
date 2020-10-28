@@ -26,7 +26,7 @@ const About = () => {
           </div>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Place} alt="image" />
+              <img src={Place} alt="placeholder" />
             </div>
           </Zoom>
         </div>
@@ -34,7 +34,7 @@ const About = () => {
         <div className={Styles.flex}>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Login} alt="image" />
+              <img src={Login} alt="placeholder" />
             </div>
           </Zoom>
           <div className={Styles.txt}>
@@ -71,7 +71,7 @@ const About = () => {
           </div>
           <Slide right>
             <div className={Styles.pic}>
-              <img src={Jwtback} alt="image" />
+              <img src={Jwtback} alt="placeholder" />
             </div>
           </Slide>
         </div>
@@ -79,7 +79,7 @@ const About = () => {
         <div className={Styles.flex}>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Token} alt="image" />
+              <img src={Token} alt="placeholder" />
             </div>
           </Zoom>
           <div className={Styles.txt}>
@@ -124,7 +124,7 @@ const About = () => {
           </div>
           <Zoom>
             <div className={Styles.pic}>
-              <img src={Reg} alt="image" />
+              <img src={Reg} alt="placeholder" />
             </div>
           </Zoom>
         </div>
@@ -133,7 +133,7 @@ const About = () => {
       <div className={Styles.flex}>
         <Zoom>
           <div className={Styles.pic}>
-            <img src={Email} alt="image" />
+            <img src={Email} alt="placeholder" />
           </div>
         </Zoom>
         <div className={Styles.txt}>
@@ -168,7 +168,7 @@ const About = () => {
         </div>
         <Zoom>
           <div className={Styles.pic}>
-            <img src={Confirm} alt="image" />
+            <img src={Confirm} alt="placeholder" />
           </div>
         </Zoom>
       </div>

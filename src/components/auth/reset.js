@@ -1,30 +1,37 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
 import Styles from "./register.module.scss";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { useHistory } from "react-router-dom";
+
 import { AuthContext } from "../../context/AuthContext";
 import Joi from "joi";
-import axios from "axios";
+
 import Button from "../util/Button";
 import { Link } from "react-router-dom";
 
 const schema = Joi.object({
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required(),
   password: Joi.string().min(6).max(256).required(),
+  confirmpassword: Joi.ref("password"),
 });
 
-export default function Login(props) {
+const Reset = (props) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: joiResolver(schema),
   });
-  const authcontext = useContext(AuthContext);
+  //const authcontext = useContext(AuthContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
-  const APILogin = "/api/v1/users/login";
+  const [redirect, setRedirect] = useState(false);
+
+  const { token } = useParams();
+
+  const ConfirmURL = "/api/v1/users/reset";
 
   //clear nodeError
   const clearNode = () => {
@@ -47,13 +54,13 @@ export default function Login(props) {
   //fetch data
   async function fetchData(data) {
     try {
-      const loginRes = await axios.post(APILogin, data, {
+      const loginRes = await axios.post(`ConfirmURL/${token}`, data, {
         withCredentials: true,
       });
 
-      authcontext.setIsAuthenticated(true);
+      return console.log("middel###", loginRes.response);
 
-      history.push("/");
+      //history.push("/");
     } catch (err) {
       err.response.data.msg && setNodeError(err.response.data.msg);
     }
@@ -88,22 +95,22 @@ export default function Login(props) {
     <div className={Styles.reg}>
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Login</h1>
+          <h1>Reset Password</h1>
           <div className={Styles.errorcon}>{welcome && <p>{welcome}</p>}</div>
-          <input
-            name="email"
-            placeholder="Email"
-            defaultValue=""
-            ref={register}
-          />
-          <div className={Styles.errorcon}>
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
 
           <input
             name="password"
             type="password"
             placeholder="password"
+            ref={register}
+          />
+          <div className={Styles.errorcon}>
+            {errors.password && <p>{errors.password.message}</p>}
+          </div>
+          <input
+            name="confirmpassword"
+            type="password"
+            placeholder="Confirm Password"
             ref={register}
           />
           <div className={Styles.errorcon}>
@@ -125,4 +132,6 @@ export default function Login(props) {
       </div>
     </div>
   );
-}
+};
+
+export default Reset;

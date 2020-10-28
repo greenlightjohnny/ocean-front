@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import Styles from "./register.module.scss";
+import Styles from "../../components/auth/register.module.scss";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useHistory } from "react-router-dom";
@@ -7,16 +7,14 @@ import { AuthContext } from "../../context/AuthContext";
 import Joi from "joi";
 import axios from "axios";
 import Button from "../util/Button";
-import { Link } from "react-router-dom";
 
 const schema = Joi.object({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
-  password: Joi.string().min(6).max(256).required(),
 });
 
-export default function Login(props) {
+export default function ResetRequest(props) {
   const { register, handleSubmit, errors } = useForm({
     resolver: joiResolver(schema),
   });
@@ -24,7 +22,7 @@ export default function Login(props) {
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
-  const APILogin = "/api/v1/users/login";
+  const APIReset = "/api/v1/users/reset";
 
   //clear nodeError
   const clearNode = () => {
@@ -47,13 +45,11 @@ export default function Login(props) {
   //fetch data
   async function fetchData(data) {
     try {
-      const loginRes = await axios.post(APILogin, data, {
+      const resetRes = await axios.post(APIReset, data, {
         withCredentials: true,
       });
 
-      authcontext.setIsAuthenticated(true);
-
-      history.push("/");
+      //history.push("/");
     } catch (err) {
       err.response.data.msg && setNodeError(err.response.data.msg);
     }
@@ -88,7 +84,7 @@ export default function Login(props) {
     <div className={Styles.reg}>
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Login</h1>
+          <h1>Reset</h1>
           <div className={Styles.errorcon}>{welcome && <p>{welcome}</p>}</div>
           <input
             name="email"
@@ -100,16 +96,6 @@ export default function Login(props) {
             {errors.email && <p>{errors.email.message}</p>}
           </div>
 
-          <input
-            name="password"
-            type="password"
-            placeholder="password"
-            ref={register}
-          />
-          <div className={Styles.errorcon}>
-            {errors.password && <p>{errors.password.message}</p>}
-          </div>
-
           {/* <input type="submit" /> */}
           <Button type="submit" isLoading={isButtonLoading}>
             Submit
@@ -118,8 +104,8 @@ export default function Login(props) {
             {nodeError && <p>{nodeError}</p>}
           </div>
           <p>
-            Forgot your password? Click <Link to="/reset">Here</Link> to reset
-            it.
+            Forgot your password? Enter the email you registered with and we
+            will send you a link reset it.
           </p>
         </form>
       </div>
