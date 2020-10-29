@@ -91,6 +91,13 @@
     color: #2199df;
     padding-top: 5px;
     padding-bottom: 5px;
+
+    a {
+      text-decoration: none;
+      color: rgb(47, 255, 158);
+      color: #fff;
+      //text-transform: uppercase;
+    }
   }
 
   .errorcon {

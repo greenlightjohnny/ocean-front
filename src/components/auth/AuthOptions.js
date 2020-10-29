@@ -30,27 +30,27 @@ const AuthOptions = (props) => {
   };
 
   return (
-    <>
-      <Link to="/secrets">Secret</Link>
-      <button onClick={logout}>Log Out</button>
-      <Link to="/user" alt="control panel">
-        <img className={Styles.btn} src={Logo} alt="test" />
-      </Link>
-    </>
-    // <div>
-    //   {authContext.isAuthenticated ? (
-    //     <>
-    //       <Link to="/secrets">Secret</Link>
-    //       <button onClick={logout}>Log Out</button> <Logo stroke="#ec5990" />
-    //     </>
-    //   ) : (
-    //     <>
-    //       <Link to="/secrets">Secret</Link>
-    //       <button onClick={register}>Register</button>
-    //       <button onClick={login}>Login</button>{" "}
-    //     </>
-    //   )}
-    // </div>
+    // <>
+    //   <Link to="/secrets">Secret</Link>
+    //   <button onClick={logout}>Log Out</button>
+    //   <Link to="/user" alt="control panel">
+    //     <img className={Styles.btn} src={Logo} alt="test" />
+    //   </Link>
+    // </>
+    <div>
+      {authContext.isAuthenticated ? (
+        <>
+          <Link to="/secrets">Secret</Link>
+          <button onClick={logout}>Log Out</button> <Logo stroke="#ec5990" />
+        </>
+      ) : (
+        <>
+          <Link to="/secrets">Secret</Link>
+          <button onClick={register}>Register</button>
+          <button onClick={login}>Login</button>{" "}
+        </>
+      )}
+    </div>
   );
 };
 

@@ -1,3 +1,6 @@
+//$mainBG: #191d3a;
+$mainBG: #2d388f;
+
 .main {
   min-height: 100vh;
   background-color: #191d3a;
@@ -13,7 +16,7 @@
     grid-column: 4 / 21;
     grid-row: 1 / 21;
     //background-color: rgb(185, 172, 172);
-    background-color: #2e4369;
+    background-color: $mainBG;
   }
 
   .gridContainer {
@@ -76,7 +79,8 @@
         top: -40px;
         height: 50px;
         width: 50px;
-        background-color: #2e4369;
+        //background-color: #2e4369;
+        background-color: $mainBG;
       }
 
       .round:after {
@@ -91,6 +95,7 @@
         z-index: 2;
 
         background-color: rgb(51, 89, 216);
+        //background-color: $mainBG;
       }
 
       .round2 {
@@ -99,7 +104,8 @@
         bottom: -40px;
         height: 50px;
         width: 50px;
-        background-color: #2e4369;
+        //background-color: #2e4369;
+        background-color: $mainBG;
       }
 
       .round2:after {
@@ -154,7 +160,8 @@
           color: #00b9ff;
         }
         &.active {
-          background-color: #2e4369;
+          //background-color: #2e4369;
+          background-color: $mainBG;
           border-left: 3px solid #00b9ff;
         }
         &:active,
