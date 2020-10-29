@@ -4,11 +4,11 @@
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid red;
+  //border: 1px solid red;
   height: 100vh;
-  padding-top: 60px;
+  //padding-top: 60px;
 
   .gridContainer {
     // display: grid;
@@ -46,31 +46,76 @@
   }
 
   .select {
-    border: 1px solid blue;
+    //border: 1px solid blue;
 
     grid-column: 1 / 4;
     grid-row: 1 / 21;
+    background-color: rgb(51, 89, 216);
+    padding-top: 60px;
 
     .selectItem {
       width: 100%;
-      border: 1px solid green;
+      //border: 1px solid green;
       display: flex;
       justify-content: center;
-      margin-top: 3rem;
+
+      height: 58px;
+
+      &.current {
+        background-color: #2e4369;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding-left: 20px;
+        color: #fff;
+        transition: color 0.2s ease-in-out;
+        &:hover {
+          color: #00b9ff;
+        }
+      }
+
+      span {
+        padding-left: 20px;
+        font-weight: 600;
+      }
 
       button {
         background-color: transparent;
+        width: 100%;
+        display: flex;
+        align-items: center;
         border: none;
+
+        padding-left: 20px;
+        transition: color 0.2s ease-in-out;
+        color: #fff;
         &:hover {
           cursor: pointer;
+          color: #00b9ff;
+        }
+        &.active {
+          background-color: #2e4369;
+          border-left: 3px solid #00b9ff;
+        }
+        &:active,
+        &:focus {
+          outline: none;
         }
 
-        h4 {
-          color: #fff;
-          text-transform: uppercase;
-          font-size: 1.3rem;
+        span {
+          //text-transform: uppercase;
+          font-size: 14px;
         }
       }
+    }
+
+    .active {
+      background-color: #2e4369;
     }
   }
 }
