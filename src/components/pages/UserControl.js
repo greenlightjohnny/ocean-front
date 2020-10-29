@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./usercontrol.module.scss";
 import { Link } from "react-router-dom";
-import clsx from "clsx";
-
 const UserControl = () => {
   const [linkState, setLinkState] = useState({
     links: [
