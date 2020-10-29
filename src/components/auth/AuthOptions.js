@@ -39,19 +39,19 @@ const AuthOptions = (props) => {
     // </>
     <>
       {authContext.isAuthenticated ? (
-        <>
+        <div>
           <Link to="/secrets">Secret</Link>
           <button onClick={logout}>Log Out</button>
           <Link to="/user" alt="control panel">
             <img className={Styles.btn} src={Logo2} alt="test" />
           </Link>
-        </>
+        </div>
       ) : (
-        <>
+        <div>
           <Link to="/secrets">Secret</Link>
           <button onClick={register}>Register</button>
           <button onClick={login}>Login</button>{" "}
-        </>
+        </div>
       )}
     </>
   );

@@ -25,7 +25,8 @@ function App() {
           <Route path="/register" component={Register}></Route>
           <Route path="/register" component={Register}></Route>
           <Private path="/secrets" component={Secret}></Private>
-          <Route path="/user" component={UserControl}></Route>
+          {/* <Route path="/user" component={UserControl}></Route> */}
+          <Private path="/user" component={UserControl}></Private>
           <Route path="/confirm/:etoken" component={Confirm}></Route>
           <Route path="/resetform/:token" component={Reset2}></Route>
           <Route path="/reset" component={Reset}></Route>
